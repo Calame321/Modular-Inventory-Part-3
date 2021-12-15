@@ -1,0 +1,170 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Resource",
+"class": "Base_stat",
+"language": "GDScript",
+"path": "res://items/base_stat.gd"
+}, {
+"base": "Button",
+"class": "Chest",
+"language": "GDScript",
+"path": "res://chest.gd"
+}, {
+"base": "Scale_Control",
+"class": "Dragable_Control",
+"language": "GDScript",
+"path": "res://ui/dragable_control.gd"
+}, {
+"base": "Inventory_Slot",
+"class": "Equipment_Slot",
+"language": "GDScript",
+"path": "res://ui/equipment_slot.gd"
+}, {
+"base": "Reference",
+"class": "Game_Enums",
+"language": "GDScript",
+"path": "res://managers/game_enums.gd"
+}, {
+"base": "Scale_Control",
+"class": "Hotbar",
+"language": "GDScript",
+"path": "res://ui/hotbar.gd"
+}, {
+"base": "Inventory_Slot",
+"class": "Hotbar_Slot",
+"language": "GDScript",
+"path": "res://ui/hotbar_slot.gd"
+}, {
+"base": "NinePatchRect",
+"class": "Inventory",
+"language": "GDScript",
+"path": "res://inventory/inventory.gd"
+}, {
+"base": "TextureRect",
+"class": "Inventory_Slot",
+"language": "GDScript",
+"path": "res://inventory/inventory_slot.gd"
+}, {
+"base": "TextureRect",
+"class": "Item",
+"language": "GDScript",
+"path": "res://items/item.gd"
+}, {
+"base": "NinePatchRect",
+"class": "Item_Info",
+"language": "GDScript",
+"path": "res://items/item_info.gd"
+}, {
+"base": "Label",
+"class": "Item_Info_Line",
+"language": "GDScript",
+"path": "res://ui/item_stat_line.gd"
+}, {
+"base": "Node",
+"class": "Resource_Manager",
+"language": "GDScript",
+"path": "res://managers/resource_manager.gd"
+}, {
+"base": "Control",
+"class": "Scale_Control",
+"language": "GDScript",
+"path": "res://ui/scale_control.gd"
+}, {
+"base": "Scale_Control",
+"class": "Split_Stack",
+"language": "GDScript",
+"path": "res://ui/split_stack.gd"
+}, {
+"base": "Resource",
+"class": "Stat_Range",
+"language": "GDScript",
+"path": "res://items/stat_range.gd"
+} ]
+_global_script_class_icons={
+"Base_stat": "",
+"Chest": "",
+"Dragable_Control": "",
+"Equipment_Slot": "",
+"Game_Enums": "",
+"Hotbar": "",
+"Hotbar_Slot": "",
+"Inventory": "",
+"Inventory_Slot": "",
+"Item": "",
+"Item_Info": "",
+"Item_Info_Line": "",
+"Resource_Manager": "",
+"Scale_Control": "",
+"Split_Stack": "",
+"Stat_Range": ""
+}
+
+[application]
+
+config/name="Tutorial_Modular_Inventory"
+run/main_scene="res://scenes/main.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+SignalManager="*res://managers/signal_manager.gd"
+ItemManager="*res://managers/item_manager.gd"
+SettingsManager="*res://managers/settings_manager.gd"
+ResourceManager="*res://managers/resource_manager.gd"
+
+[display]
+
+window/size/width=512
+window/size/height=300
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[input]
+
+left_click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+hotbar_1={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":49,"unicode":0,"echo":false,"script":null)
+ ]
+}
+hotbar_2={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":50,"unicode":0,"echo":false,"script":null)
+ ]
+}
+hotbar_3={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":51,"unicode":0,"echo":false,"script":null)
+ ]
+}
+hotbar_4={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":52,"unicode":0,"echo":false,"script":null)
+ ]
+}
+hotbar_5={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":53,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

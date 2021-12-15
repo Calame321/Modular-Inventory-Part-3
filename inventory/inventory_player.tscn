@@ -1,0 +1,216 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://inventory/inventory_player.gd" type="Script" id=1]
+[ext_resource path="res://inventory/sprites/bar.png" type="Texture" id=2]
+[ext_resource path="res://inventory/sprites/inner_panel.png" type="Texture" id=3]
+[ext_resource path="res://inventory/sprites/x_hover.png" type="Texture" id=4]
+[ext_resource path="res://equipment.gd" type="Script" id=5]
+[ext_resource path="res://inventory/sprites/main panel.png" type="Texture" id=6]
+[ext_resource path="res://inventory/sprites/x_pressed.png" type="Texture" id=7]
+[ext_resource path="res://inventory/sprites/x_disabled.png" type="Texture" id=8]
+[ext_resource path="res://inventory/sprites/x_normal.png" type="Texture" id=9]
+[ext_resource path="res://inventory/sprites/title.png" type="Texture" id=10]
+[ext_resource path="res://font/Arcadepix Plus.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://inventory/equipment_slot.tscn" type="PackedScene" id=12]
+[ext_resource path="res://inventory/inventory.tscn" type="PackedScene" id=13]
+
+[sub_resource type="DynamicFont" id=1]
+size = 14
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+font_data = ExtResource( 11 )
+
+[node name="inventory_player" type="NinePatchRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -72.0
+margin_top = -29.0
+margin_right = 72.0
+margin_bottom = 145.0
+mouse_filter = 1
+texture = ExtResource( 6 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+inventory_right = NodePath("inventory_container/inventory_right")
+inventory_left = NodePath("inventory_container/inventory_left")
+equipment = NodePath("inventory_container/equipment")
+
+[node name="title" type="NinePatchRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -61.0
+margin_top = -11.0
+margin_right = 61.0
+margin_bottom = 7.0
+mouse_filter = 1
+texture = ExtResource( 10 )
+patch_margin_left = 8
+patch_margin_top = 6
+patch_margin_right = 8
+patch_margin_bottom = 2
+
+[node name="Label" type="Label" parent="title"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 4.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.301961, 0.34902, 0.4, 1 )
+text = "Player's Inventory"
+align = 1
+valign = 1
+
+[node name="close" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -9.0
+margin_bottom = 9.0
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 4 )
+texture_disabled = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="inventory_container" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 9.0
+margin_top = 10.0
+margin_right = -9.0
+margin_bottom = -5.0
+custom_constants/separation = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="equipment" type="NinePatchRect" parent="inventory_container"]
+margin_right = 126.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 70 )
+texture = ExtResource( 3 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+inventory_name = "Equipment"
+title = NodePath("TextureRect/Label")
+slot_container = NodePath("slot_container")
+head = NodePath("slot_container/equipment_head")
+chest = NodePath("slot_container/equipment_chest")
+offhand = NodePath("slot_container/equipment_offhand")
+main_hand = NodePath("slot_container/equipment_main_hand")
+
+[node name="TextureRect" type="TextureRect" parent="inventory_container/equipment"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -18.0
+margin_top = 10.0
+margin_right = 18.0
+margin_bottom = 12.0
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="inventory_container/equipment/TextureRect"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -59.0
+margin_top = -9.0
+margin_right = 59.0
+margin_bottom = -3.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
+text = "- Inventory name -"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="slot_container" type="Control" parent="inventory_container/equipment"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 9.0
+margin_top = 14.0
+margin_right = -9.0
+margin_bottom = -8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="equipment_head" parent="inventory_container/equipment/slot_container" instance=ExtResource( 12 )]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -10.0
+margin_right = 10.0
+mouse_filter = 1
+type = 1
+
+[node name="equipment_chest" parent="inventory_container/equipment/slot_container" instance=ExtResource( 12 )]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -10.0
+margin_top = 28.0
+margin_right = 10.0
+margin_bottom = 48.0
+mouse_filter = 1
+type = 2
+
+[node name="equipment_main_hand" parent="inventory_container/equipment/slot_container" instance=ExtResource( 12 )]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -40.0
+margin_top = 28.0
+margin_right = -20.0
+margin_bottom = 48.0
+mouse_filter = 1
+type = 3
+
+[node name="equipment_offhand" parent="inventory_container/equipment/slot_container" instance=ExtResource( 12 )]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 21.4399
+margin_top = 28.0
+margin_right = 41.4399
+margin_bottom = 48.0
+mouse_filter = 1
+type = 4
+
+[node name="inventory_left" parent="inventory_container" instance=ExtResource( 13 )]
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 0.0
+margin_top = 72.0
+margin_right = 126.0
+margin_bottom = 112.0
+inventory_name = "Left Pocket"
+size = 5
+
+[node name="inventory_right" parent="inventory_container" instance=ExtResource( 13 )]
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 0.0
+margin_top = 114.0
+margin_right = 126.0
+margin_bottom = 154.0
+inventory_name = "Right Pocket"
+size = 5
+
+[connection signal="pressed" from="close" to="." method="_on_close_pressed"]

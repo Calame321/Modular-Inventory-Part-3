@@ -1,0 +1,137 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://inventory/inventory_player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://items/item_info.tscn" type="PackedScene" id=2]
+[ext_resource path="res://inventory/inventory_container.tscn" type="PackedScene" id=3]
+[ext_resource path="res://chest_rng.gd" type="Script" id=4]
+[ext_resource path="res://chest.gd" type="Script" id=5]
+[ext_resource path="res://managers/inventory_manager.gd" type="Script" id=6]
+[ext_resource path="res://ui/settings.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ui/ui_container.gd" type="Script" id=8]
+[ext_resource path="res://inventory/split_stack.tscn" type="PackedScene" id=9]
+[ext_resource path="res://ui/hotbar.tscn" type="PackedScene" id=10]
+
+[node name="main" type="Node2D"]
+
+[node name="game" type="Node2D" parent="."]
+
+[node name="managers" type="Node2D" parent="."]
+
+[node name="inventory_manager" type="Node2D" parent="managers"]
+script = ExtResource( 6 )
+item_in_hand_node = NodePath("../../ui/ui_container/item_in_hand")
+item_info = NodePath("../../ui/ui_container/item_info")
+split_stack = NodePath("../../ui/ui_container/split stack")
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="ui_container" type="Control" parent="ui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+settings = NodePath("windows/settings")
+
+[node name="windows" type="Control" parent="ui/ui_container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="settings" parent="ui/ui_container/windows" instance=ExtResource( 7 )]
+visible = false
+margin_left = -64.6146
+margin_top = -127.633
+margin_right = 79.3854
+margin_bottom = -45.6325
+
+[node name="inventory_container" parent="ui/ui_container/windows" instance=ExtResource( 3 )]
+visible = false
+margin_left = -66.4254
+margin_top = -119.801
+margin_right = 77.5746
+margin_bottom = -59.8009
+
+[node name="inventory_player" parent="ui/ui_container/windows" instance=ExtResource( 1 )]
+margin_left = -237.09
+margin_top = -97.6551
+margin_right = -93.0897
+margin_bottom = 76.3449
+
+[node name="hotbar" parent="ui/ui_container" instance=ExtResource( 10 )]
+size = 5
+
+[node name="item_in_hand" type="Control" parent="ui/ui_container"]
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="item_info" parent="ui/ui_container" instance=ExtResource( 2 )]
+visible = false
+margin_left = 551.5
+margin_top = 324.5
+margin_right = 634.5
+margin_bottom = 351.5
+
+[node name="buttons" type="Control" parent="ui/ui_container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="chest" type="Button" parent="ui/ui_container/buttons"]
+margin_left = 140.5
+margin_top = 236.0
+margin_right = 188.5
+margin_bottom = 256.0
+text = "Chest"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+size = 9
+inventory_name = "Cool Chest"
+items = [ "gold_coin", "crystal", "magic_orb", "iron_sword", "chestplate", "helmet" ]
+
+[node name="chest2" type="Button" parent="ui/ui_container/buttons"]
+margin_left = 269.5
+margin_top = 235.0
+margin_right = 373.5
+margin_bottom = 255.0
+text = "Random Chest"
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+size = 15
+inventory_name = "Random Chest"
+items = [ "gold_coin", "stone_brick", "wood", "crystal" ]
+number_of_items = 10
+
+[node name="settings" type="Button" parent="ui/ui_container/buttons"]
+margin_left = 444.005
+margin_top = 4.65837
+margin_right = 507.005
+margin_bottom = 24.6584
+text = "Settings"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="split stack" parent="ui/ui_container" instance=ExtResource( 9 )]
+visible = false
+
+[connection signal="pressed" from="ui/ui_container/buttons/chest" to="ui/ui_container/buttons/chest" method="_on_chest_pressed"]
+[connection signal="pressed" from="ui/ui_container/buttons/chest2" to="ui/ui_container/buttons/chest2" method="_on_chest_pressed"]
+[connection signal="pressed" from="ui/ui_container/buttons/settings" to="ui/ui_container" method="_on_settings_pressed"]

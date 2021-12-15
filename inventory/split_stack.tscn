@@ -1,0 +1,202 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://inventory/sprites/x_pressed.png" type="Texture" id=1]
+[ext_resource path="res://inventory/sprites/x_hover.png" type="Texture" id=2]
+[ext_resource path="res://inventory/sprites/title.png" type="Texture" id=3]
+[ext_resource path="res://inventory/sprites/inner_panel.png" type="Texture" id=4]
+[ext_resource path="res://inventory/sprites/main panel.png" type="Texture" id=5]
+[ext_resource path="res://inventory/sprites/x_disabled.png" type="Texture" id=6]
+[ext_resource path="res://inventory/sprites/x_normal.png" type="Texture" id=7]
+[ext_resource path="res://ui/split_stack.gd" type="Script" id=8]
+[ext_resource path="res://font/Arcadepix Plus.ttf" type="DynamicFontData" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 14
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 12
+font_data = ExtResource( 9 )
+
+[node name="split stack" type="ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -256.0
+margin_top = -150.0
+margin_right = 256.0
+margin_bottom = 150.0
+color = Color( 0, 0, 0, 0.592157 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+qty_slider = NodePath("main panel/scale/quantity_slider")
+lbl_original = NodePath("main panel/scale/original_qty")
+lbl_new = NodePath("main panel/scale/new_qty")
+
+[node name="main panel" type="NinePatchRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -72.0
+margin_top = -29.0
+margin_right = 72.0
+margin_bottom = 21.0
+mouse_filter = 1
+texture = ExtResource( 5 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="NinePatchRect" parent="main panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -40.0
+margin_top = -11.0
+margin_right = 40.0
+margin_bottom = 7.0
+mouse_filter = 1
+texture = ExtResource( 3 )
+patch_margin_left = 8
+patch_margin_top = 6
+patch_margin_right = 8
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="main panel/title"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 4.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.301961, 0.34902, 0.4, 1 )
+text = "Split"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="close" type="TextureButton" parent="main panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -9.0
+margin_bottom = 9.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 2 )
+texture_disabled = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="scale" type="NinePatchRect" parent="main panel"]
+margin_left = 9.0
+margin_top = 10.0
+margin_right = 135.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 30 )
+texture = ExtResource( 4 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="main panel/scale"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -32.0
+margin_top = 4.0
+margin_right = 32.0
+margin_bottom = 10.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
+text = "- Quantity -"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="original_qty" type="Label" parent="main panel/scale"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -56.0
+margin_top = 4.0
+margin_right = -23.0
+margin_bottom = 10.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
+text = "10"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="new_qty" type="Label" parent="main panel/scale"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 23.0
+margin_top = 4.0
+margin_right = 56.0
+margin_bottom = 10.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
+text = "10"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="quantity_slider" type="HSlider" parent="main panel/scale"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 7.0
+margin_top = -6.0
+margin_right = -6.0
+margin_bottom = 10.0
+min_value = 0.5
+max_value = 1.5
+step = 0.1
+value = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_split" type="Button" parent="main panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -24.0
+margin_top = -8.0
+margin_right = 24.0
+margin_bottom = 8.0
+custom_fonts/font = SubResource( 3 )
+text = "Split!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="main panel/close" to="." method="_on_close_pressed"]
+[connection signal="value_changed" from="main panel/scale/quantity_slider" to="." method="_on_quantity_slider_value_changed"]
+[connection signal="pressed" from="main panel/btn_split" to="." method="_on_btn_split_pressed"]

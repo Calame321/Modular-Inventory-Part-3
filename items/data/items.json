@@ -1,0 +1,96 @@
+{
+	"gold_coin": {
+		"name": "Gold Coin",
+		"stack_size": 3,
+		"level": 1
+	},
+	"crystal": {
+		"name": "Crystal",
+		"stack_size": 20,
+		"level": 1
+	},
+	"wood": {
+		"name": "Wood",
+		"stack_size": 10,
+		"level": 1
+	},
+	"stone_brick": {
+		"name": "Stone Brick",
+		"stack_size": 10,
+		"level": 1
+	},
+	"helmet": {
+		"name": "Helmet",
+		"type": "HEAD",
+		"level": 2,
+		"base_stats": [{
+			"stat": "DEFENCE",
+			"minimum": 2,
+			"maximum": 3
+		}]
+	},
+	"tshirt": {
+		"name": "T-Shirt",
+		"type": "CHEST",
+		"level": 1,
+		"base_stats": [{
+			"stat": "DEFENCE",
+			"minimum": 1,
+			"maximum": 2
+		}]
+	},
+	"chestplate": {
+		"name": "Chestplate",
+		"type": "CHEST",
+		"level": 7,
+		"base_stats": [{
+			"stat": "DEFENCE",
+			"minimum": 4,
+			"maximum": 7
+		}]
+	},
+	"wooden_sword": {
+		"name": "Wooden Sword",
+		"type": "MAIN_HAND",
+		"level": 1,
+		"base_stats": [{
+			"stat": "DAMAGE",
+			"minimum": 1,
+			"maximum": 3
+		}]
+	},
+	"iron_sword": {
+		"name": "Iron Sword",
+		"type": "MAIN_HAND",
+		"level": 1,
+		"base_stats": [{
+			"stat": "DAMAGE",
+			"minimum": 3,
+			"maximum": 7
+		}]
+	},
+	"shield": {
+		"name": "Shield",
+		"type": "OFFHAND",
+		"level": 1,
+		"base_stats": [{
+			"stat": "DEFENCE",
+			"minimum": 3,
+			"maximum": 7
+		}]
+	},
+	"magic_orb": {
+		"name": "Magic Orb",
+		"type": "OFFHAND",
+		"level": 1,
+		"base_stats": [{
+			"stat": "INTELLIGENCE",
+			"minimum": 4,
+			"maximum": 8
+		},{
+			"stat": "REGENERATION",
+			"minimum": 1,
+			"maximum": 3
+		}]
+	}
+}
